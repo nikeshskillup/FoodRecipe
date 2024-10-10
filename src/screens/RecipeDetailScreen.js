@@ -34,7 +34,7 @@ export default function RecipeDetailScreen(props) {
             {/* recipe Image */}
             <View style={styles.imageContainer} testID="imageContainer">
                 <Image
-                    source={{ uri: recipe.recipeImage }}
+                    source={{ uri: recipe.item.recipeImage }}
                     style={styles.recipeImage}
                 />
             </View>
@@ -69,10 +69,10 @@ export default function RecipeDetailScreen(props) {
                     testID="recipeDetailsContainer"
                 >
                     <Text style={styles.recipeTitle} testID="recipeTitle">
-
-
+                        {recipe.item.recipeName}
                     </Text>
                     <Text style={styles.recipeCategory} testID="recipeCategory">
+                        {recipe.item.recipeCategory}
                     </Text>
                 </View>
                 <View style={styles.miscContainer} testID="miscContainer">
@@ -98,7 +98,7 @@ export default function RecipeDetailScreen(props) {
                 <View style={styles.sectionContainer}>
                     <Text style={styles.sectionTitle}>Ingredients</Text>
                     <View style={styles.ingredientsList} testID="ingredientsList">
-                        {(recipe.ingredients).map((i) => (
+                        {(recipe.item.ingredients).map((i) => (
                             <View key={i} style={styles.ingredientItem}>
                                 <View style={styles.ingredientBullet} />
                                 <Text style={styles.ingredientText}>
@@ -113,7 +113,7 @@ export default function RecipeDetailScreen(props) {
                 {/* Instructions */}
                 <View style={styles.sectionContainer} testID="sectionContainer">
                     <Text style={styles.sectionTitle}>Instructions</Text>
-                    <Text style={styles.instructionsText}>{recipe.recipeInstructions}</Text>
+                    <Text style={styles.instructionsText}>{recipe.item.recipeInstructions}</Text>
 
                 </View>
                 {/* Description */}
