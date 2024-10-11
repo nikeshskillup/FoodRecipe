@@ -10,6 +10,8 @@ import { toggleFavorite } from "../redux/favoritesSlice"; // Redux action
 
 export default function RecipeDetailScreen(props) {
     const recipe = props.route.params; // recipe passed from previous screen
+    console.log("Recipes data using props:", recipe)
+
 
     const dispatch = useDispatch();
     const favoriterecipes = useSelector(
@@ -47,7 +49,7 @@ export default function RecipeDetailScreen(props) {
                 >
                     <Text>Back</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     onPress={handleToggleFavorite}
                     style={[
                         styles.favoriteButton,
@@ -57,7 +59,19 @@ export default function RecipeDetailScreen(props) {
                     ]}
                 >
                     <Text>{isFavourite ? "♥" : "♡"}</Text>
+                </TouchableOpacity> */}
+                <TouchableOpacity
+                    onPress={handleToggleFavorite}
+                    style={[
+                        styles.favoriteButton,
+                        {
+                            backgroundColor: isFavourite ? "red" : "white", // Update style based on isFavourite
+                        },
+                    ]}
+                >
+                    <Text>{isFavourite ? "♥" : "♡"}</Text>
                 </TouchableOpacity>
+
             </View>
 
             {/* recipe Description */}

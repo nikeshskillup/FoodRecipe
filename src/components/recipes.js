@@ -3,18 +3,18 @@ import React from "react";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp, } from "react-native-responsive-screen";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Recipe({ categories, recipes }) {
+export default function Recipe({ categories, foods }) {
     const navigation = useNavigation();
 
-    const renderItem = ({ item, index }) => {
-    return( <ArticleCard item={item} index={index} navigation={navigation} />
-    )};
+    const renderItem = ({ item, index }) => (
+     <ArticleCard item={item} index={index} navigation={navigation} />
+    );
 
     return (
         <View style={styles.container}>
             <View testID="recipesDisplay">
                 <FlatList
-                    data={recipes}
+                    data={foods}
                     keyExtractor={(item) => item.recipeId}
                     renderItem={renderItem}
                     numColumns={2}

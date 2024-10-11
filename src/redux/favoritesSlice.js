@@ -17,6 +17,7 @@ const favoritesSlice = createSlice({
       } else {
         state.favoriterecipes.push(action.payload);
       }
+      console.log('favoriterecipes:', state.favoriterecipes); // Add this line
     },
   },
 });

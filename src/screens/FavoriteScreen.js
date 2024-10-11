@@ -13,14 +13,15 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-
+ 
 export default function FavoriteScreen() {
     const navigation = useNavigation();
 
     // Assuming you have a similar structure for recipes in your Redux store
     const favoriteRecipes = useSelector((state) => state.favorites);
+    console.log('favoriteRecipes:', favoriteRecipes); // Add this line
     const favoriteRecipesList = favoriteRecipes?.favoriterecipes || [];
-    console.log(favoriteRecipes.favoriterecipes);
+    // console.log(favoriteRecipes.favoriterecipes);
     console.log('favoriteRecipesList', favoriteRecipesList);
 
 
@@ -77,7 +78,7 @@ export default function FavoriteScreen() {
             <FlatList
                 data={favoriteRecipesList}
                 contentContainerStyle={styles.listContentContainer}
-                keyExtractor={(item) => item.idFood}
+                keyExtractor={(item) => item.idFood + item.recipeName}
                 renderItem={({ item }) => (
                     <TouchableOpacity
                         onPress={() => navigation.navigate("RecipeDetail", { item })}
@@ -88,7 +89,7 @@ export default function FavoriteScreen() {
                             style={styles.recipeImage}
                         />
                         <Text style={styles.recipeTitle} numberOfLines={1}>
-                            {item.recipeName}
+                            {item.recipeName.length > 20 ? item.recipeName.substring(0, 20) + '...' : item.recipeName}
                         </Text>
                     </TouchableOpacity>
                 )}
